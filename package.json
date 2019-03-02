@@ -2,10 +2,18 @@
   "name": "groceries",
   "version": "1.0.0",
   "description": "Live grocery list for users",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
-    "test": "export NODE_ENV=test && jasmine"
+    "test": "export NODE_ENV=test && jasmine",
+    "start": "node src/server.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine": "^3.3.1",
+    "request": "^2.88.0"
+  },
+  "dependencies": {
+    "express": "^4.16.4"
+  }
 }
