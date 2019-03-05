@@ -40,6 +40,7 @@ describe("routes : users", () => {
           password: "123456789"
         }
       }
+
         request.post(options,
         (err, res, body) => {
           User.findOne({where: {email: "simon@example.com"}})
