@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../static/partials/head.ejs %>
+  </head>
+  <body>
+    <% include ../static/partials/navbar.ejs %>
+
+    <main class="container">
+      <h1><%= list.title %></h1>
+      <a href="/lists/<%= list.id %>/edit" class="btn btn-warning btn-sm">Edit</a>
+
+      <form style="display:initial" action="/lists/<%= list.id %>/destroy" method="post">
+        <button type="submit" class="btn btn-danger btn-sm ">Delete</button>
+      </form>
+      <p><%= list.description %></p>
+    </main>
+
+    <% include ../static/partials/baseScripts.ejs %>
+
+  </body>
+</html>
