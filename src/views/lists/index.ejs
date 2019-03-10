@@ -14,11 +14,9 @@
 
       <ul class="list-group">
         <% lists.forEach((list) => { %>
-          <% if(currentUser.isOwner) { %>
           <li class="list-group-item">
             <a href="/lists/<%= list.id %>"> <%= list.title %> </a>
           </li>
-        <% } %>
         <% }) %>
       </ul>
 
