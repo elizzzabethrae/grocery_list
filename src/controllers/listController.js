@@ -23,6 +23,7 @@ module.exports = {
     };
     listQueries.addList(newList, (err, list) => {
       if(err){
+        console.log(err);
         res.redirect(500, "/list/new");
       } else {
         res.redirect(303, `/lists/${list.id}`);
