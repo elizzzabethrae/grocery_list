@@ -18,7 +18,9 @@
         </div>
         <div class="form-group">
           <label for="bought">Has this item been bought?</label>
-          <input type="checkbox" class="form-control" name="bought"value="<%= item.bought %>" >Yes</input>
+          <input type="checkbox" class="form-control" name="bought" checked="<% item.bought ? "checked" : "" %>" />
+          <span>Yes</span>
+
         </div>
         <button type="submit" class="btn btn-primary">Update</button>
       </form>
