@@ -7,7 +7,8 @@
     <% include ../static/partials/navbar.ejs %>
 
     <main class="container">
-      <h1><%= list.title %></h1>
+      <h1 ><%= list.title %></h1>
+      <a href="/lists" class="btn btn-info btn-sm">Back</a>
       <a href="/lists/<%= list.id %>/edit" class="btn btn-warning btn-sm">Edit</a>
 
       <form style="display:initial" action="/lists/<%= list.id %>/destroy" method="post">
@@ -27,6 +28,7 @@
             </form>
           </li>
           <% }) %>
+
 
               </ul>
 
