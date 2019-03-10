@@ -7,11 +7,14 @@
     <% include ../static/partials/navbar.ejs %>
 
     <main class="container">
+      <% include ../static/partials/messages.ejs %>
+
       <h1>Add Item To List</h1>
       <form action="/lists/<%= listId %>/items/create" method="post">
         <div class="form-group">
           <label for="name">Item Name</label>
           <input type="text" class="form-control" name="name" aria-describedby="itemHelp" placeholder="Enter Item">
+          <small class="text-muted" id="nameHelp">title must be 2 or more characters in length.</small>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>

@@ -60,13 +60,35 @@ describe("routes : items", () => {
       };
       request.post(options,
         (err, res, body) => {
-
           Item.findOne({where: {name: "bananas"}})
           .then((item) => {
             expect(item).not.toBeNull();
             expect(item.name).toBe("bananas");
             expect(item.bought).toBe(false);
             expect(item.listId).not.toBeNull();
+            done();
+          })
+          .catch((err) => {
+            console.log(err);
+            done();
+          });
+        }
+      );
+    });
+
+    it("should not create a new item that fails validations", (done) => {
+      const options = {
+        url: `${base}/${this.list.id}/items/create`,
+        form: {
+          name: "cr",
+          bought: false
+        }
+      };
+      request.post(options,
+        (err, res, body) => {
+          Item.findOne({where: {name: "cr"}})
+          .then((item) => {
+            expect(item).toBeNull();
             done();
           })
           .catch((err) => {
@@ -132,14 +154,14 @@ describe("routes : items", () => {
   });
 
   it("should update the item with the given values", (done) => {
-      const options = {
-        url: `${base}/${this.list.id}/items/${this.item.id}/update`,
-        form: {
-          name: "Bananas"
-        }
-      };
-      request.post(options,
-        (err, res, body) => {
+    const options = {
+      url: `${base}/${this.list.id}/items/${this.item.id}/update`,
+      form: {
+        name: "Bananas"
+      }
+    };
+    request.post(options,
+      (err, res, body) => {
         expect(err).toBeNull();
         Item.findOne({
           where: {id: this.item.id}
@@ -149,8 +171,10 @@ describe("routes : items", () => {
           done();
         });
       });
+    });
+
   });
 
-});
+
 
 });
