@@ -15,13 +15,36 @@
       </form>
       <p><%= list.description %></p>
 
-      <ul class="list-group">
-        <% list.items.forEach((item) => { %>
+    <p>  Items To Buy: </p>
+    <ul class="list-group">
+
+      <% list.items.forEach((item) => { %>
+
           <li class="list-group-item">
-            <a href="/lists/<%= list.id %>/items/<%= item.id%>"> <%= item.name %> </a>
+            <a href="/lists/<%= item.listId %>/items/<%= item.id %>/edit"> <%= item.name %> </a>
+            <form style="display:initial" align="right" action="/lists/<%= item.listId %>/items/<%= item.id %>/destroy" method="post">
+              <button type="submit" align="right" class="btn btn-danger btn-sm">Delete</button>
+            </form>
           </li>
           <% }) %>
-        </ul>
+          <!--p>  Bought Items: </p>
+            <% if (list.items.bought == true) { %>
+              <% list.items.forEach((item) => { %>
+
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <a href="/lists/<%= item.listId %>/items/<%= item.id %>/edit"> <%= item.name %> </a>
+                  <form style="display:initial" align="right" action="/lists/<%= item.listId %>/items/<%= item.id %>/destroy" method="post">
+                    <button type="submit" align="right" class="btn btn-danger btn-sm">Delete</button>
+                  </form>
+                </li>
+                <% }) %>
+                <% } %-->
+
+              </ul>
+
+        <a href="/lists/<%= list.id %>/items/new" class="btn btn-success btn-sm">Add Items</a>
+
     </main>
 
     <% include ../static/partials/baseScripts.ejs %>
