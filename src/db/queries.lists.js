@@ -16,7 +16,8 @@ module.exports = {
   addList(newList, callback){
     return List.create({
       title: newList.title,
-      description: newList.description
+      description: newList.description,
+      userId: newList.userId
     })
     .then((list) => {
       callback(null, list);
@@ -46,21 +47,11 @@ module.exports = {
       where: {id}
     })
     .then((list) => {
-      const authorized = new Authorizer(req.user, application).destroy();
-      //list or application abov e?
-      if(authorized) {
-        list.destroy()
-        .then((res) => {
-          callback(null, topic);
-        });
-      } else {
-        req.flash("notice", "You are not authorized to do that.")
-        callback(401);
-      }
+      callback(null, list);
     })
     .catch((err) => {
       callback(err);
-    });
+    })
   },
 
   updateList(id, updatedList, callback){
@@ -69,8 +60,6 @@ module.exports = {
       if(!list){
         return callback("List not found");
       }
-      const authorized = new Authorizer(req.user, application).update();
-      if(authorized){
       list.update(updatedList, {
         fields: Object.keys(updatedList)
       })
@@ -80,10 +69,6 @@ module.exports = {
       .catch((err) => {
         callback(err);
       });
-    } else {
-         req.flash("notice", "You are not authorized to do that.");
-         callback("Forbidden");
-    }
     });
   }
 
