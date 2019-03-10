@@ -14,9 +14,8 @@ module.exports = {
     app.set("view engine", "ejs");
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(expressValidator());
-    app.use(express.cookieParser(process.env.cookieSecret));
     app.use(session({
-      secret: process.env.cookieSecret,
+      secret: "I like toast",
       resave: false,
       saveUninitialized: false,
       cookie: { maxAge: 1.21e+9 }
