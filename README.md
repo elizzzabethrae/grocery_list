@@ -13,4 +13,10 @@ Minimum Requirements:
 5. Accompany your code with a full test suite.
 6. Deploy your site to a web host (e.g., on Amazon EC2, Heroku, Netlify, Google AppEngine, etc.).
 
+Things I would continue to do if given more time:
+1. Integrate a framework for real time updates, like Socket.io
+2. Integrate more policies around who gets to see what lists
+    -for example: users only get to see their own lists, and lists they are invited to view
+3. Create a smoother entry system for items, allowing people to add multiple items to a list at once.
+
 
