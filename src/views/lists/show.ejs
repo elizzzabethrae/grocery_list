@@ -27,19 +27,7 @@
             </form>
           </li>
           <% }) %>
-          <!--p>  Bought Items: </p>
-            <% if (list.items.bought == true) { %>
-              <% list.items.forEach((item) => { %>
-
-              <ul class="list-group">
-                <li class="list-group-item">
-                  <a href="/lists/<%= item.listId %>/items/<%= item.id %>/edit"> <%= item.name %> </a>
-                  <form style="display:initial" align="right" action="/lists/<%= item.listId %>/items/<%= item.id %>/destroy" method="post">
-                    <button type="submit" align="right" class="btn btn-danger btn-sm">Delete</button>
-                  </form>
-                </li>
-                <% }) %>
-                <% } %-->
+      
 
               </ul>
 
