@@ -1,4 +1,6 @@
 module.exports = {
+
+
   validateItems(req, res, next) {
     if(req.method === "POST") {
       req.checkParams("listId", "must be valid").notEmpty().isInt();

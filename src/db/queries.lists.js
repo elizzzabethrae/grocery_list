@@ -46,11 +46,21 @@ module.exports = {
       where: {id}
     })
     .then((list) => {
-      callback(null, list);
+      const authorized = new Authorizer(req.user, application).destroy();
+      //list or application abov e?
+      if(authorized) {
+        list.destroy()
+        .then((res) => {
+          callback(null, topic);
+        });
+      } else {
+        req.flash("notice", "You are not authorized to do that.")
+        callback(401);
+      }
     })
     .catch((err) => {
       callback(err);
-    })
+    });
   },
 
   updateList(id, updatedList, callback){
@@ -59,6 +69,8 @@ module.exports = {
       if(!list){
         return callback("List not found");
       }
+      const authorized = new Authorizer(req.user, application).update();
+      if(authorized){
       list.update(updatedList, {
         fields: Object.keys(updatedList)
       })
@@ -68,6 +80,10 @@ module.exports = {
       .catch((err) => {
         callback(err);
       });
+    } else {
+         req.flash("notice", "You are not authorized to do that.");
+         callback("Forbidden");
+    }
     });
   }
 

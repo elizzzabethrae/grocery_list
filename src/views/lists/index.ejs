@@ -8,14 +8,17 @@
       <% include ../static/partials/navbar.ejs %>
 
       <h1>Lists</h1>
-      <a href="/lists/new/" class="btn btn-warning btn-sm">New List</a>
-
+      <% if(currentUser) { %>
+        <a href="/lists/new/" class="btn btn-warning btn-sm">New List</a>
+        <% } %>
 
       <ul class="list-group">
         <% lists.forEach((list) => { %>
+          <% if(currentUser.isOwner) { %>
           <li class="list-group-item">
             <a href="/lists/<%= list.id %>"> <%= list.title %> </a>
           </li>
+        <% } %>
         <% }) %>
       </ul>
 
